@@ -188,7 +188,9 @@ class StreamProcessor
             $this->appendFiltersToStream($this->resource);
         }
 
-        $this->intercept();
+        if ($this->shouldProcess($path)) {
+            $this->intercept();
+        }
 
         return $this->resource !== false;
     }
